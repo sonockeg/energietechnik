@@ -1,0 +1,629 @@
+\chapter*{Transformatoren und Schaltgruppen}
+\label{chap:04-transformatoren}
+
+Dieses Kapitel ist als Bestandteil des modularen Lehrskripts vorgesehen.
+Inhalte werden ergänzt, nachdem die fachlichen Grundlagen und die
+Quellenlage für dieses Thema systematisch ausgearbeitet wurden.
+
+\begin{center}
+\begin{minipage}{0.8\textwidth}
+\noindent
+\input{tikz/041_trafo.tikz.tex}
+\begin{tikzpicture}[transform shape]
+	% Paths, nodes and wires:
+	\draw (2, 4) to[european inductor, l={$L_{s1}=\sigma_1 L_1$}] (4, 4);
+	\draw (0, 4) to[generic, l={$R_1$}] (2, 4);
+	\draw (5, 2) to[european inductor, l_={$L_{h1}$}, label distance=0.03cm] (5, 4);
+	\draw (10, 4) to[generic, l={$R_2$}] (12, 4);
+	\draw (8, 4) to[european inductor, l={$L_{s2}=\sigma_2 L_2$}] (10, 4);
+	\draw (4, 2) to[generic, l={$R_{FE}$}] (4, 4);
+	\node[transformer core, cute, xscale=0.95, yscale=0.95] at (7.003, 3.003){};
+	\draw (6.005, 4) |- (5, 4);
+	\draw (6, 2) |- (5, 2) |- (4, 2) -- (0, 2);
+	\draw (4, 4) -- (5, 4);
+	\draw (8, 2.005) -| (12, 2);
+	\draw[line width=1pt, -latex] (0, 3.75) -- (0, 2.25)   node[midway, right=2pt] {$\underline{U}_1$};
+	\draw[line width=1pt, -latex] (12, 3.75) -- (12, 2.25) node[midway, right=2pt] {$\underline{U}_2$};
+	\draw[line width=1pt, -latex] (6, 3.75) -- (6, 2.25)   ;%node[midway, right=2pt] {$\underline{U}_{1h}$};
+	\draw[line width=1pt, -latex] (8, 3.75) -- (8, 2.25)   node[midway, right=2pt] {$\underline{U}_{2h} = \frac{N_2}{N_1} \, \underline{U}_{1h} $};
+    \node[above=3pt] at (5.8, 4) {$L_{h1} = (1-\sigma_1) L_1 $};
+\end{tikzpicture}
+\par\bigskip
+\noindent
+\begin{tikzpicture}[transform shape]
+	% Paths, nodes and wires:
+	\draw (2, 4) to[european inductor, l={$L_{s1}=\sigma_1 L_1$}] (4, 4);
+	\draw (0, 4) to[generic, l={$R_1$}] (2, 4);
+	\draw (5, 2) to[european inductor, l_={$L_{h1}$}, label distance=0.03cm] (5, 4);
+	\draw (8.005, 4) to[generic, l={$R_2'$}, i^<=$i_2'$] (10.005, 4);
+	\draw (6.005, 4) to[european inductor, l={$L_{s2}'=\sigma_2 L_2'$}] (8.005, 4);
+	\draw (4, 2) to[generic, l={$R_{FE}$}] (4, 4);
+	\draw (6.005, 4) |- (5, 4);
+	\draw (10, 2) -- (5, 2) |- (4, 2) -- (0, 2);
+	\draw (4, 4) -- (5, 4);
+    \draw (6, 2) |- (5, 2) |- (4, 2) -- (0, 2);
+	\draw (8, 2.005) -| (10, 2);
+	\draw (2, 4) to[european inductor, l={$L_{s1}=\sigma_1 L_1$}] (4, 4);
+	\draw (0, 4) to[generic, l={$R_1$}] (2, 4);
+	\draw (5, 2) to[european inductor, l_={$L_{h1}$}, label distance=0.03cm] (5, 4);
+	\draw (4, 2) to[generic, l={$R_{FE}$}] (4, 4);
+	\node[transformer core, cute, xscale=0.95, yscale=0.95] at (10.997, 3.003){};
+	\draw[line width=1pt, -latex] (0, 3.75) -- (0, 2.25)   node[midway, right=2pt] {$\underline{U}_1$};
+	\draw[line width=1pt, -latex] (12, 3.75) -- (12, 2.25) node[midway, right=2pt] {$\underline{U}_2$};
+	\draw[line width=1pt, -latex] (10, 3.75) -- (10, 2.25) node[midway, left=0pt] {$\frac{N_1}{N_2} \, \underline{U}_2$};
+	\draw[line width=1pt, -latex] (6, 3.75) -- (6, 2.25)  node[midway, right=2pt]  {$\underline{U}_{1h} $};
+\end{tikzpicture}
+\par\bigskip
+\noindent
+\begin{tikzpicture}[transform shape]
+	% Paths, nodes and wires:
+	\draw (2, 4) to[european inductor, l={$L_{s1}=\sigma_1 L_1$}] (4, 4);
+	\draw (0, 4) to[generic, l={$R_1$}] (2, 4);
+	\draw (5, 2) to[european inductor, l_={$L_{h1}$}, label distance=0.03cm] (5, 4);
+	\draw (8, 4) to[generic, l={$R_2'$}, i^<=$i_2'$]  (10, 4);
+	\draw (6, 4) to[european inductor, l={$L_{s2}'$}] (8, 4);
+	\draw (4, 2) to[generic, l={$R_{FE}$}] (4, 4);
+	\draw (6, 4) |- (5, 4);
+	\draw (10, 2) -- (5, 2) |- (4, 2) -- (0, 2);
+	\draw (4, 4) -- (5, 4);
+	\draw[line width=1pt, -latex] (0, 3.75) -- (0, 2.25) node[midway, right=2pt] {$\underline{U}_1$};
+	\draw[line width=1pt, -latex] (10, 3.75) -- (10, 2.25) node[midway, right=2pt] {$\underline{U}_2'$};
+	\draw[line width=1pt, -latex] (6, 3.75) -- (6, 2.25) node[midway, right=2pt] {$\underline{U}_{1h}$};
+\end{tikzpicture}
+
+\par\bigskip
+\noindent
+\begin{tikzpicture}[transform shape]
+	% Paths, nodes and wires:
+	\draw (4.5, 5)    to[european inductor, l={$X_{1\sigma}+X_{2\sigma}'$}] (6.5, 5);
+	\draw (2.5, 5)    to[generic, l={$R_1+R_2'$}] (4.5, 5);
+	\draw (1.5, 2.5)  to[european inductor, l={$2X_{1h}$}, label distance=0.03cm] (1.5, 4.5);
+	\draw (2.5, 2.5)  to[generic, l_={$2R_{FE}$}] (2.5, 4.5);
+	\draw (6.5, 2.5)  to[european inductor, l={$2X_{1h}$}, label distance=0.03cm] (6.5, 4.5);
+	\draw (7.5, 2.5)  to[generic, l_={$2R_{FE}$}] (7.5, 4.5);
+    \draw[line width=1pt, -latex] (0, 4.5) -- (0, 2.5) node[midway, left=2pt] {$\underline{U}_{1}$};
+	\draw[line width=1pt, -latex] (9, 4.5) -- (9, 2.5) node[midway, right=2pt] {$\underline{U}_{2}'$};
+	\draw (1.5, 2.5) -- (2.5, 2.5);
+	\draw (1.5, 4.5) -- (2.5, 4.5);
+	\draw (0, 5) -- (2.5, 5);
+    \draw (0, 5) to[short, i^>={$I_1$}] (1,5);
+	\draw (2, 4.5) -| (2, 5);
+	\draw (6.5, 2.5) -- (7.5, 2.5);
+	\draw (6.5, 4.5) -- (7.5, 4.5);
+	\draw (7, 4.5) -| (7, 5);
+	\draw (0, 2) -- (9, 2);
+	\draw (2, 2.5) -| (2, 2);
+	\draw (7, 2.5) -| (7, 2);
+	\draw (6.5, 5) -- (9, 5);
+    \draw (8, 5) to[short, i^<={$I_2'$}] (9,5);
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[transform shape]
+	\draw (1, 0.75) to[tmultiwire] (1, 0.25);
+	\draw (1, 2.5) to[ioosource] (1, -0);
+	\draw (1, 2.25) to[tmultiwire] (1, 1.75);
+\end{tikzpicture}
+
+\end{minipage}
+\end{center}
+$$ L_1 = L_{h1} + L_{s1} $$
+$$ L_{h1} = (1-\sigma_1) L_1 $$
+
+$$ M = \frac{N_1}{N_2} = k \, \sqrt{L_1 L_2} $$
+
+
+\chapter{Transformatoren und ihre Ersatzschaltbilder}
+\label{chap:transformatoren}
+
+\section{Lernziele und Einordnung}
+
+Transformatoren ermöglichen die verlustarme Übertragung elektrischer Energie
+zwischen unterschiedlichen Spannungsebenen. Für die Netzberechnung sind sie
+nicht nur als ideale Spannungsübersetzer zu betrachten. Wicklungswiderstände,
+Streuflüsse, Magnetisierungsstrom, Eisenverluste und die Schaltgruppe bestimmen
+das Betriebsverhalten und beeinflussen insbesondere Kurzschluss- und Erdschlussströme.
+
+Nach diesem Kapitel sollen folgende Aufgaben gelöst werden können:
+\begin{itemize}
+  \item Übersetzungsverhältnis und Nennströme aus Typenschilddaten bestimmen;
+  \item ein einphasiges Ersatzschaltbild eines Drehstromtransformators aufstellen;
+  \item Leerlauf- und Kurzschlussversuch auswerten;
+  \item aus der Kurzschlussspannung eine Ersatzimpedanz bestimmen;
+  \item Wirk- und Blindanteil der Transformatorimpedanz unterscheiden;
+  \item die Auswirkungen von Schaltgruppe und Neutralpunkterdung auf das
+        Nullsystem qualitativ beurteilen.
+\end{itemize}
+
+\section{Idealer Transformator}
+
+\subsection{Induktionsgesetz und Spannungsübersetzung}
+
+Die elektromagnetische Induktion wird durch das Faradaysche
+Induktionsgesetz beschrieben. In differentieller Form der
+Maxwellgleichungen enthalten als
+\[
+    \nabla \times \vec{E}
+    = -\frac{\partial \vec{B}}{\partial t}.
+\]
+Sie beschreibt, wie eine zeitlich veränderliche magnetische
+Flussdichte $\vec{B}$ ein elektrisches Wirbelfeld erzeugt.
+Durch Integration über eine von
+einer Wicklung umschlossene Fläche folgt das Induktionsgesetz für
+eine einzelne Windung. Für eine Wicklung mit $N$ Windungen ergibt
+sich unter Berücksichtigung der gewählten Bezugsrichtungen
+\[
+    u(t) = N \frac{\mathrm d\Phi(t)}{\mathrm dt},
+\]
+wobei $\Phi$ der magnetische Fluss durch eine Windungsfläche ist.
+Das Vorzeichen hängt von der Festlegung der Wicklungsrichtung bezüglich
+der positiven Flussrichtung ab.
+
+\subsection{Entstehung des magnetischen Flusses}
+
+Der magnetische Fluss im Transformatorkern wird durch den Strom
+in den Wicklungen hervorgerufen. Das Durchflutungsgesetz, oder
+in vollständiger, differentieller Form, das
+Ampère-Maxwell-Gesetz
+
+\[
+        \nabla \times \vec{H}
+        = \vec{J} + \frac{\partial}{\partial t} \vec{D}
+\]
+
+beschreibt mit $\vec{H}$ die entstehende magnetische Feldstärke
+aufgrund von elektrischer Stromdichte $\vec{J}$ und in seiner
+Wirkung als Verschiebungsstrom bezeichneten Ableitung der elektrischen Flussdichte $\vec{D}$. Das
+Gesetz besagt, dass sowohl elektrische Ströme als auch zeitlich veränderliche
+elektrische Felder ein magnetisches Wirbelfeld hervorrufen.
+
+Der Wicklungsstrom $N I$ bildet für einen Trafo die Durchflutung,
+die nach diesem Gesetz mit einer mittleren
+magnetischen Weglänge $l_\mathrm{m}$ dem entstehenden magnetischen Feld gleicht.
+
+\[
+    H l_\mathrm{m} = N I.
+\]
+
+Die magnetische Flussdichte ergibt sich aus der Materialgleichung
+\[
+    \vec{B} = \mu_0 \mu_\mathrm{r}\vec{H},
+\]
+wobei $\mu_0$ die magnetische Feldkonstante und $\mu_\mathrm{r}$
+die relative Permeabilität des Kernmaterials bezeichnet. Der
+magnetische Fluss durch den Kernquerschnitt $A_\mathrm{K}$ ist
+\[
+    \Phi = \int_{A_\mathrm{K}} \vec{B}\cdot \mathrm d\vec{A}.
+\]
+Bei näherungsweise homogener Flussdichte und einem konstanten
+Kernquerschnitt vereinfacht sich dies zu
+\[
+    \Phi \approx B A_\mathrm{K}.
+\]
+
+Für den nachfolgend skizzierten Transformator ist die als $\underline{U}_1$
+eingespeiste Spannung die Ursache für einen Strom $i_1$, der zu einem Fluss
+$\Phi$ führt und eine der Ursache entgegenwirkende, induszierte Spannung
+aufbaut, die das Treiben von Strom zu dem sich einstellenden Arbeitspunkt begrenzt.
+
+\vspace{-1.1em}
+\begin{center}
+\input{tikz/042_trafo_skizze.tikz.tex}
+\end{center}
+
+Damit folgt unmittelbar für den Leerlauf ($i_2 = 0\,A$) eine
+dem Windungsverhältnis proportional induzierte Spannung $\underline{U}_2$
+sowie für den Kurzschlussfall ein dem Windungsverhältnis antiproportionaler
+Strom.
+
+Die Gleichungen beschreiben den Zusammenhang zwischen
+Wicklungsstrom, magnetischer Feldstärke, Flussdichte und
+magnetischem Fluss. Im realen Transformator wird der Fluss durch
+den nichtlinearen Kernwerkstoff, den magnetischen Widerstand,
+Streuanteile und gegebenenfalls die Sättigung beeinflusst. Für
+den idealen Transformator wird angenommen, dass der gesamte
+magnetische Fluss beide Wicklungen vollständig verkettet.
+
+\subsection{Herleitung des Übersetzungsverhältnisses}
+
+Primär- und Sekundärwicklung sind auf demselben magnetischen
+Kreis angeordnet. Im idealen Modell verkettet deshalb derselbe
+zeitabhängige Fluss $\Phi(t)$ beide Wicklungen. Wendet man das
+Induktionsgesetz auf beide Wicklungen an, erhält man betragsmäßig
+\[
+    U_1 = N_1 \left|\frac{\mathrm d\Phi}{\mathrm dt}\right|,
+    \qquad
+    U_2 = N_2 \left|\frac{\mathrm d\Phi}{\mathrm dt}\right|.
+\]
+Das Verhältnis der beiden Spannungen ergibt sich unmittelbar,
+weil der gemeinsame Flussterm herausgekürzt werden kann:
+\[
+    \boxed{\frac{U_1}{U_2}=\frac{N_1}{N_2}=a.}
+\]
+Das Übersetzungsverhältnis $a$ ist hier als Verhältnis der
+Primärspannung zur Sekundärspannung beziehungsweise der
+Primärwindungszahl zur Sekundärwindungszahl definiert. Bei dieser
+Konvention gilt $a>1$ für einen abwärts und $a<1$ für einen
+aufwärts übersetzenden Transformator.
+
+Bei sinusförmigem magnetischem Fluss
+\[
+    \Phi(t)=\Phi_{\max}\sin(\omega t)
+\]
+ist die induzierte Spannung ebenfalls sinusförmig. Aus der
+Ableitung des Flusses folgt für den Effektivwert
+\[
+    \boxed{U=4{,}44\,f\,N\,\Phi_{\max}.}
+\]
+Die Beziehung gilt für sinusförmigen Fluss und vernachlässigte
+Spannungsabfälle an den Wicklungswiderständen und Streuinduktivitäten.
+
+\subsection{Stromübersetzung und Leistungsübertragung}
+
+Für den idealen Transformator werden Wicklungswiderstände,
+Streuinduktivitäten und Kernverluste vernachlässigt. Es wird
+daher keine Wirkleistung in Wärme umgesetzt. Im sinusförmigen
+stationären Betrieb gilt für die Beträge der Wirkleistung bei
+idealer Leistungsübertragung
+\[
+    U_1 I_1 = U_2 I_2.
+\]
+Zusammen mit dem Spannungsübersetzungsverhältnis folgt
+\[
+    \boxed{\frac{I_1}{I_2}=\frac{U_2}{U_1}=\frac{1}{a}.}
+\]
+Die Stromübersetzung verhält sich somit umgekehrt zur
+Spannungsübersetzung: Eine höhere Sekundärspannung geht mit
+einem entsprechend geringeren Sekundärstrom einher, sofern die
+übertragene Leistung gleich bleibt.
+
+Die Strombeziehung ist eine Betragsbeziehung. Die Vorzeichen
+beziehungsweise Phasenlagen der Ströme hängen von den gewählten
+Bezugsrichtungen und der Punktkennzeichnung der Wicklungen ab.
+
+
+Die induzierte Spannung einer Wicklung folgt aus dem Induktionsgesetz von
+Faraday, in differenzieller Form der Maxwellgleichung:
+
+\[
+    %\boxed{
+        \nabla \times \vec{E}
+        = -\frac{\partial \vec{B}}{\partial t}
+    %}
+\]
+
+durch Integration über eine Windung und Summation über $N$ Windungen zu
+
+\[
+  u(t)=N\frac{\mathrm d\Phi(t)}{\mathrm dt},
+\]
+wobei das Vorzeichen von der gewählten Wicklungs- und Flussrichtung abhängt.
+
+Bei sinusförmigem magnetischem Fluss
+\[
+  \Phi(t)=\Phi_{\max}\sin(\omega t)
+\]
+ergibt sich für den Effektivwert der induzierten Spannung
+\[
+  U=4{,}44\,f\,N\,\Phi_{\max}.
+\]
+
+Für zwei ideal gekoppelte Wicklungen folgt daraus
+\[
+  \frac{U_1}{U_2}=\frac{N_1}{N_2}=a.
+\]
+Das Übersetzungsverhältnis \(a\) ist hier als Verhältnis der Spannungen
+auf der Seite 1 zur Seite 2 definiert.
+
+Bei idealer Leistungsübertragung gilt
+\[
+  U_1 I_1=U_2 I_2
+\]
+für die Beträge der entsprechenden Effektivwerte. Damit folgt
+\[
+  \frac{I_1}{I_2}=\frac{1}{a}.
+\]
+
+Bei einem realen Drehstromtransformator müssen die Leiter-Leiter-Spannungen,
+Strangspannungen, Wicklungsverschaltungen und gegebenenfalls die Phasenverschiebung
+zwischen den Seiten getrennt betrachtet werden. Das einfache Verhältnis \(a\)
+ist unmittelbar auf die Spannungen der jeweils gekoppelten Wicklungen anwendbar.
+
+\subsection{Nennströme}
+
+Für einen symmetrischen Drehstromtransformator mit Bemessungsscheinleistung
+\(S_N\) und Leiter-Leiter-Bemessungsspannung \(U_N\) beträgt der Bemessungsstrom
+auf der betreffenden Seite
+\[
+  I_N=\frac{S_N}{\sqrt{3}\,U_N}.
+\]
+
+Beispiel: Ein Transformator mit
+\[
+  S_N=40\,\mathrm{MVA},\qquad U_{N,1}=110\,\mathrm{kV}
+\]
+besitzt auf der 110-kV-Seite den Bemessungsstrom
+\[
+  I_{N,1}
+  =\frac{40\,\mathrm{MVA}}{\sqrt{3}\cdot110\,\mathrm{kV}}
+  \approx210\,\mathrm{A}.
+\]
+
+Bei \(U_{N,2}=20\,\mathrm{kV}\) ergibt sich sekundärseitig
+\[
+  I_{N,2}
+  =\frac{40\,\mathrm{MVA}}{\sqrt{3}\cdot20\,\mathrm{kV}}
+  \approx1{,}155\,\mathrm{kA}.
+\]
+
+Die Bemessungsleistung bleibt näherungsweise gleich, während sich die
+Bemessungsströme umgekehrt zum Spannungsverhältnis verhalten.
+
+\section{Reales Ersatzschaltbild}
+
+\subsection{Serienzweig}
+
+Das reale Ersatzschaltbild berücksichtigt die Wicklungswiderstände
+\(R_1\) und \(R_2\) sowie die Streureaktanzen \(X_{\sigma 1}\) und
+\(X_{\sigma 2}\).
+
+Die Wicklungswiderstände beschreiben die ohmschen Verluste der Leiter.
+Die Streureaktanzen repräsentieren den Anteil des magnetischen Flusses,
+der nicht beide Wicklungen in gleicher Weise verkettet.
+
+Für die Sekundärimpedanz gilt beim Bezug auf die Primärseite
+\[
+  Z_2'=a^2 Z_2.
+\]
+Daraus folgen für den zusammengefassten Serienzweig näherungsweise
+\[
+  R_k=R_1+a^2R_2,
+  \qquad
+  X_k=X_{\sigma 1}+a^2X_{\sigma 2},
+\]
+und
+\[
+  Z_k=R_k+jX_k.
+\]
+
+Diese Beziehungen setzen voraus, dass alle Größen auf dieselbe Seite
+bezogen sind. Die Streuinduktivitäten sind dabei durch ihre Reaktanzen
+bei der betrachteten Frequenz repräsentiert:
+\[
+  X_\sigma=\omega L_\sigma.
+\]
+
+\subsection{Magnetisierungszweig}
+
+Der Magnetisierungszweig wird durch einen Eisenverlustwiderstand
+\(R_{\mathrm{Fe}}\) und eine Magnetisierungsreaktanz \(X_m\) modelliert.
+Der Widerstand repräsentiert die im Kern auftretenden Verluste,
+insbesondere Hysterese- und Wirbelstromverluste. Die Reaktanz bildet
+den zur Erzeugung des magnetischen Flusses erforderlichen Strom ab.
+
+Das vereinfachte Ersatzschaltbild enthält somit:
+\begin{itemize}
+  \item den idealen Transformator;
+  \item den Serienwiderstand und die Streureaktanz;
+  \item den parallel liegenden Magnetisierungszweig.
+\end{itemize}
+
+Für Kurzschlussrechnungen wird der Magnetisierungszweig häufig vernachlässigt,
+weil der Kurzschlussstrom hauptsächlich durch die Serienimpedanz begrenzt wird.
+Für Leerlauf, Einschaltvorgänge und genauere Betriebsberechnungen ist diese
+Vereinfachung nicht ohne Weiteres zulässig.
+
+\section{Leerlaufversuch}
+
+\subsection{Messprinzip}
+
+Beim Leerlaufversuch wird eine Wicklung mit einer definierten Spannung gespeist,
+während die andere Wicklung offen bleibt. Gemessen werden beispielsweise
+\[
+  U_0,\qquad I_0,\qquad P_0.
+\]
+
+Bei Nennfrequenz und geeigneter Prüfspannung ist der Leerlaufstrom typischerweise
+deutlich kleiner als der Bemessungsstrom. Deshalb sind die ohmschen Verluste
+der gespeisten Wicklung häufig klein gegenüber den Eisenverlusten.
+
+Unter dieser Näherung gilt
+\[
+  P_{\mathrm{Fe}}\approx P_0.
+\]
+
+Die Näherung wird schlechter, wenn die Wicklungsverluste des Leerlaufstroms
+nicht mehr vernachlässigbar sind oder die Prüfbedingungen von den
+Bemessungsbedingungen abweichen.
+
+\subsection{Bestimmung der Ersatzparameter}
+
+Für einen einphasigen Ersatzschaltkreis ergibt sich näherungsweise
+\[
+  R_{\mathrm{Fe}}=\frac{U_0^2}{P_0}.
+\]
+
+Der Wirkstromanteil des Leerlaufstroms ist
+\[
+  I_{\mathrm{Fe}}=\frac{P_0}{U_0}.
+\]
+
+Der Magnetisierungsstrom wird bei angenommener Orthogonalität von Wirk- und
+Blindstromanteil bestimmt durch
+\[
+  I_m=\sqrt{I_0^2-I_{\mathrm{Fe}}^2}.
+\]
+Damit folgt
+\[
+  X_m=\frac{U_0}{I_m}.
+\]
+
+Bei Drehstromtransformatoren ist zu beachten, ob die Messwerte als
+Leitergrößen oder als Stranggrößen vorliegen. Die Parameterformeln sind
+auf den jeweils verwendeten einphasigen Ersatzkreis anzuwenden.
+
+\section{Kurzschlussversuch}
+
+\subsection{Messprinzip}
+
+Beim Kurzschlussversuch wird eine Wicklung kurzgeschlossen. An die andere
+Wicklung wird eine reduzierte Spannung angelegt, sodass der gewünschte
+Prüfstrom fließt. Für den üblichen Versuch mit Bemessungsstrom werden
+Spannung, Strom und Wirkleistung gemessen:
+\[
+  U_k,\qquad I_k,\qquad P_k.
+\]
+
+Da die angelegte Spannung deutlich unter der Bemessungsspannung liegt,
+ist der magnetische Fluss geringer als im Nennbetrieb. Die Eisenverluste
+sind deshalb meist klein gegenüber den Wicklungsverlusten.
+
+Die gemessene Kurzschlussleistung kann daher näherungsweise zur Bestimmung
+der Serienverluste verwendet werden.
+
+\subsection{Auswertung für einen einphasigen Ersatzkreis}
+
+Für den einphasigen Ersatzkreis gelten
+\[
+  |Z_k|=\frac{U_k}{I_k},
+\]
+\[
+  R_k=\frac{P_k}{I_k^2},
+\]
+und
+\[
+  X_k=\sqrt{|Z_k|^2-R_k^2}.
+\]
+
+Die letzte Gleichung setzt voraus, dass \(P_k\) die Wirkleistung des
+betrachteten einphasigen Ersatzkreises beschreibt. Bei Drehstrommessungen
+muss die Gesamtleistung konsistent auf den Strang bezogen werden.
+
+Die Kurzschlussimpedanz lautet anschließend
+\[
+  Z_k=R_k+jX_k.
+\]
+
+Eine rein betragsmäßige Angabe der Kurzschlussimpedanz reicht für viele
+Netzberechnungen als Näherung aus. Für genauere Berechnungen, insbesondere
+bei niedrigen Spannungen oder hohem Widerstandsanteil, ist die Trennung
+zwischen \(R_k\) und \(X_k\) wichtig.
+
+\section{Kurzschlussspannung und Impedanz aus Typenschilddaten}
+
+Die relative Kurzschlussspannung wird häufig in Prozent angegeben:
+\[
+  u_k=\frac{U_k}{U_N}\cdot100\%.
+\]
+
+Dabei beziehen sich \(U_k\) und \(U_N\) auf dieselbe Wicklungsseite und
+dieselbe Spannungsdefinition. Bei symmetrischen Drehstromtransformatoren
+kann aus der relativen Kurzschlussspannung der Betrag der Strangimpedanz
+näherungsweise bestimmt werden:
+\[
+  |Z_k|=\frac{u_k}{100}\frac{U_N^2}{S_N}.
+\]
+
+In dieser Gleichung ist \(U_N\) die Leiter-Leiter-Bemessungsspannung
+und \(S_N\) die dreiphasige Bemessungsscheinleistung. Die Gleichung liefert
+die Impedanz des einphasigen Strangersatzes.
+
+\subsection{Beispiel}
+
+Gegeben sei ein Transformator mit
+\[
+  S_N=10\,\mathrm{MVA},\quad
+  U_N=20\,\mathrm{kV},\quad
+  u_k=8\%.
+\]
+
+Damit ergibt sich
+\[
+  |Z_k|
+  =0{,}08\frac{(20\,\mathrm{kV})^2}{10\,\mathrm{MVA}}
+  =3{,}2\,\Omega.
+\]
+
+Der Bemessungsstrom auf der 20-kV-Seite beträgt
+\[
+  I_N=\frac{10\,\mathrm{MVA}}{\sqrt{3}\cdot20\,\mathrm{kV}}
+  \approx289\,\mathrm{A}.
+\]
+
+Der Betrag der Kurzschlussimpedanz ist damit bestimmt. Die Aufteilung
+in Wirk- und Blindanteil ist aus \(u_k\) allein jedoch nicht möglich.
+Dafür sind weitere Herstellerangaben oder Messdaten erforderlich.
+
+\section{Stufenschalter und Spannungsregelung}
+
+Stufenschalter verändern das Übersetzungsverhältnis des Transformators.
+Bei einer Wicklungsanzapfung wird die wirksame Windungszahl und damit
+die Übersetzung verändert. Je nach Bauart erfolgt die Umschaltung
+spannungsfrei oder unter Last.
+
+Ein Stufenschalter dient dazu, die Spannung auf der geregelten Seite
+innerhalb des vorgesehenen Bereichs zu halten. Die Wirkung hängt von
+Netzimpedanzen, Laststrom, Leistungsfaktor und der gewählten Regelstrategie ab.
+
+Eine Spannungsänderung ist nicht mit einer Veränderung der Kurzschlussimpedanz
+gleichzusetzen. Bei detaillierten Kurzschlussrechnungen müssen jedoch die
+tatsächliche Stufenstellung und die für das Berechnungsverfahren geltenden
+Vorgaben berücksichtigt werden.
+
+\section{Schaltgruppen und Nullsystem}
+
+Die Schaltgruppe beschreibt die Wicklungsverschaltung und die relative
+Phasenverschiebung zwischen den Seiten. Sie ist für Lastfluss, Parallelbetrieb
+und Fehlerberechnung von Bedeutung.
+
+Bei der Analyse müssen mindestens folgende Eigenschaften unterschieden werden:
+\begin{itemize}
+  \item Phasenverschiebung zwischen Ober- und Unterspannungsseite;
+  \item zugänglicher Neutralpunkt und dessen Erdung;
+  \item Möglichkeit von Nullsystemströmen in den Wicklungen;
+  \item magnetischer Rückweg des Nullsystemflusses.
+\end{itemize}
+
+Eine Dreieckwicklung kann einen Umlaufweg für bestimmte Nullsystemströme
+bereitstellen. Daraus folgt aber nicht automatisch, dass Nullsystemströme
+zwischen den beiden Netzseiten übertragen werden. Das Verhalten ist anhand
+der konkreten Schaltgruppe, der Wicklungsanordnung und der Erdung zu beurteilen.
+
+\section{Parallelbetrieb}
+
+Für den Parallelbetrieb von Transformatoren sind insbesondere zu prüfen:
+\begin{itemize}
+  \item gleiches oder kompatibles Übersetzungsverhältnis;
+  \item passende Phasenverschiebung und Schaltgruppe;
+  \item gleiche Phasenfolge und richtige Klemmenzuordnung;
+  \item vergleichbare Kurzschlussspannungen;
+  \item geeignete Impedanzwinkel und Bemessungsleistungen.
+\end{itemize}
+
+Abweichende Übersetzungsverhältnisse können Ausgleichsströme verursachen.
+Abweichende Kurzschlussimpedanzen führen zu einer ungleichen Aufteilung
+der Lastströme. Ein Parallelbetrieb darf daher nicht allein aufgrund
+gleicher Nennspannungen angenommen werden.
+
+\section{Zusammenfassung}
+
+Für Netzberechnungen ist die Transformatorimpedanz ein zentrales Element.
+Die Kurzschlussspannung liefert deren Betrag auf der gewählten Bezugsseite.
+Die Trennung in Wirk- und Blindanteil erfordert zusätzliche Informationen.
+Schaltgruppe und Erdung sind besonders für Nullsystem- und Erdschlussmodelle
+entscheidend.
+
+\section{Übungsaufgaben}
+
+\begin{enumerate}
+  \item Berechnen Sie die Bemessungsströme eines Transformators mit
+        \(S_N=25\,\mathrm{MVA}\) und \(U_N=110/20\,\mathrm{kV}\).
+  \item Ein Transformator besitzt \(S_N=16\,\mathrm{MVA}\),
+        \(U_N=10\,\mathrm{kV}\) und \(u_k=6\%\).
+        Bestimmen Sie den Betrag der Strang-Kurzschlussimpedanz auf der
+        10-kV-Seite.
+  \item Erläutern Sie, warum sich aus \(u_k\) allein nicht bestimmen lässt,
+        welcher Anteil der Kurzschlussimpedanz ohmsch ist.
+  \item Beschreiben Sie, welche Informationen zur Bewertung des
+        Nullsystemverhaltens eines Transformators erforderlich sind.
+\end{enumerate}

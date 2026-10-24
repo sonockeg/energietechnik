@@ -1,0 +1,214 @@
+\documentclass[
+    11pt,
+    a4paper,
+    oneside,
+    open=any,
+    headings=normal
+]{scrbook}
+
+% ==================================================
+% Energietechnik – modularer Praxiskurs
+% Kompilierung: LuaLaTeX (z. B. zweimal ausführen)
+% ==================================================
+
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{left=28mm,right=25mm,top=25mm,bottom=27mm,headheight=15pt}
+
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  per-mode = symbol,
+  separate-uncertainty = true
+}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{
+  arrows.meta,
+  calc,
+  circuits.ee.IEC,
+  positioning,
+  shapes.geometric
+}
+\usepackage[european]{circuitikz}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\definecolor{NetzBlau}{HTML}{174A70}
+\definecolor{WarnRot}{HTML}{A52A2A}
+\definecolor{HinweisGrau}{HTML}{F0F2F4}
+\definecolor{SicherheitsGelb}{HTML}{FFF4CC}
+
+\definecolor{Seitenfarbe}{HTML}{2f4f67}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=NetzBlau,
+  citecolor=NetzBlau,
+  urlcolor=NetzBlau,
+  pdftitle={Energietechnik – Netze, Schutz, Prüfungen und Betriebssicherheit},
+  pdfsubject={Technisches Lehrskript}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{Energietechnik – Praxiskurs}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+
+% --------------------------------------------------
+% Einheitliche Lernbausteine
+% --------------------------------------------------
+\newcommand{\phasor}[1]{\underline{#1}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\Ohm}{\,\si{\ohm}}
+\newcommand{\kV}{\,\si{\kilo\volt}}
+\newcommand{\A}{\,\si{\ampere}}
+\newcommand{\kA}{\,\si{\kilo\ampere}}
+
+\newenvironment{lernziel}
+{}{}
+  % {\par\medskip\noindent\colorbox{HinweisGrau}{%
+  %   \begin{minipage}{0.94\linewidth}\textbf{Lernziele}\par\smallskip}}
+  % {\end{minipage}\par\medskip}
+
+\newenvironment{merke}
+{}{}
+  % {\par\medskip\noindent\colorbox{HinweisGrau}{%
+  %   \begin{minipage}{0.94\linewidth}\textbf{Merke}\par\smallskip}}
+  % {\end{minipage}\par\medskip}
+
+\newtcolorbox{sicherheitshinweis}{
+  title=\textbf{\color{black} Sicherheitshinweis},
+  colback=SicherheitsGelb,
+  colframe=SicherheitsGelb,
+  boxrule=0pt,
+  arc=0pt,
+  left=2mm,
+  right=2mm,
+  top=2mm,
+  bottom=2mm,
+  before skip=\medskipamount,
+  after skip=\medskipamount,
+  fontupper=\normalsize
+}
+
+% \newenvironment{sicherheitshinweis}
+% {
+%   \par\medskip\noindent\colorbox{SicherheitsGelb}
+%   {Rechenbeispiel}
+% }{
+
+% }
+
+  % {\par\medskip\noindent\colorbox{SicherheitsGelb}{%
+  %   \begin{minipage}{0.94\linewidth}\textbf{Sicherheitshinweis}\par\smallskip}}
+  % {\end{minipage}\par\medskip}
+
+\newenvironment{rechenbeispiel}
+  {\par\medskip\noindent\textbf{Rechenbeispiel}\par\smallskip}
+  {\par\medskip}
+
+\newenvironment{aufgaben}
+  {\par\medskip\noindent\textbf{Übungsaufgaben}\begin{enumerate}[label=\arabic*.]}
+  {\end{enumerate}\medskip}
+
+% --------------------------------------------------
+% Metadaten
+% --------------------------------------------------
+\title{\Huge Energietechnik\\[0.5em]
+  \Large Netze, Schutz, Prüfungen und Betriebssicherheit}
+\subtitle{Vertiefter Praxiskurs mit Berechnungen und Fallstudien}
+\author{Technisches Lehrskript}
+\date{\today}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+%\pagecolor{Seitenfarbe}
+%\color{lightgray}
+
+\chapter*{Ziel und Arbeitsweise}
+Dieses Lehrskript verbindet die physikalischen Grundlagen der elektrischen
+Energietechnik mit Netzberechnung, Betriebsmitteln, Schutztechnik, Prüfungen
+und sicherem Anlagenbetrieb. Es ist als modular wachsendes Arbeitsdokument
+angelegt.
+
+Jedes Fachkapitel soll nach Möglichkeit enthalten:
+\begin{itemize}
+  \item physikalisches Modell und Voraussetzungen,
+  \item Ersatzschaltbild und Definition der Bezugsgrößen,
+  \item nachvollziehbare Herleitung,
+  \item Zahlenbeispiel mit Einheitenprüfung,
+  \item typische Denk- und Rechenfehler,
+  \item Übungsaufgaben mit Musterlösungen,
+  \item Hinweise auf relevante Normen und deren Geltungsbereich.
+\end{itemize}
+
+\begin{sicherheitshinweis}
+Dieses Skript ist eine Lernunterlage. Es ersetzt weder die jeweils gültigen
+Normen und betrieblichen Anweisungen noch Qualifikation, Gefährdungsbeurteilung,
+Anlagenkenntnis oder eine konkrete Freigabe. Schalthandlungen und Arbeiten an
+elektrischen Anlagen dürfen ausschließlich durch dafür qualifizierte und
+beauftragte Personen nach den gültigen Verfahren erfolgen.
+\end{sicherheitshinweis}
+
+\tableofcontents
+
+\mainmatter
+
+\part{Grundlagen der elektrischen Energietechnik}
+\include{kapitel/01_drehstrom_und_wechselstrom}
+\include{kapitel/02_netzgroessen_leistung}
+\include{kapitel/03_per_unit_impedanzumrechnung}
+
+\part{Betriebsmittel und Ersatzschaltbilder}
+\include{kapitel/04_transformatoren}
+\include{kapitel/05_leitungen_und_kabel}
+\include{kapitel/06_ersatzschaltbilder}
+
+\part{Kurzschluss und Erdschluss}
+\include{kapitel/07_symmetrische_komponenten}
+\include{kapitel/08_kurzschlussberechnung}
+\include{kapitel/09_erdschluss}
+
+\part{Erdung und Schutztechnik}
+\include{kapitel/10_erdung_und_potentialausgleich}
+\include{kapitel/11_schutztechnik}
+\include{kapitel/12_ueberspannungsschutz}
+
+\part{Prüfungen und Betriebsmittel}
+\include{kapitel/13_pruefverfahren}
+\include{kapitel/14_schaltanlagen_und_transformatorenschutz}
+
+\part{Arbeitssicherheit und Betriebsorganisation}
+\include{kapitel/15_rollen_und_befugnisse}
+\include{kapitel/16_begehung_freischaltung_euk}
+\include{kapitel/17_arbeitsfreigabe_und_arbeitsdurchfuehrung}
+\include{kapitel/18_rueckgabe_wiederinbetriebnahme}
+
+\part{Netzplanung und Praxis}
+\include{kapitel/19_netzdimensionierung}
+\include{kapitel/20_fallstudien}
+
+\appendix
+\include{kapitel/a_formelverzeichnis}
+\include{kapitel/b_symbole_einheiten}
+\include{kapitel/c_normen_und_quellen}
+
+\end{document}

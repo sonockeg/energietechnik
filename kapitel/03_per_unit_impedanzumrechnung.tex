@@ -1,0 +1,292 @@
+\chapter{Per-Unit-System und Impedanzumrechnung}
+\label{chap:perunit}
+
+\begin{lernziel}
+Nach diesem Kapitel können Sie Bezugsgrößen eines Drehstromnetzes festlegen,
+Impedanzen auf eine andere Spannungsebene beziehen, aus der
+Kurzschlussspannung eines Transformators dessen Impedanz bestimmen und
+mehrere Netzkomponenten auf eine gemeinsame Per-Unit-Basis umrechnen. Sie
+können außerdem die Grenzen einer überschlägigen Rechnung benennen.
+\end{lernziel}
+
+\section{Warum Bezugsgrößen helfen}
+
+Ein Netzmodell kann eine Einspeisung, mehrere Transformatoren und Leitungen
+verschiedener Spannungsebenen enthalten. In einem rein ohmsch-induktiven
+Ersatzschaltbild müssen alle Impedanzen, die addiert werden, auf dieselbe
+Spannungsebene bezogen sein. Das klassische Umrechnen über jedes
+Transformatorübersetzungsverhältnis ist korrekt, wird bei mehreren Ebenen aber
+unübersichtlich. Das Per-Unit-System (p.u.) beschreibt eine Größe als Anteil
+einer festgelegten Bezugsgröße.
+
+Für ein symmetrisches Drehstromsystem legen wir üblicherweise eine
+Bezugs-Scheinleistung $S_B$ und eine Leiter-Leiter-Bezugsspannung $U_B$ fest.
+Daraus ergeben sich die Bezugsgrößen
+\begin{align}
+  I_B &= \frac{S_B}{\sqrt{3}\,U_B},\\
+  Z_B &= \frac{U_B^2}{S_B},\\
+  Y_B &= \frac{1}{Z_B}=\frac{S_B}{U_B^2}.
+\end{align}
+Dabei sind $S_B$ die gesamte dreiphasige Scheinleistung und $U_B$ die
+Leiter-Leiter-Spannung. Mit $U_B$ in Volt und $S_B$ in Voltampere erhält man
+$Z_B$ in Ohm. In der Praxis dürfen konsistente Präfixe wie kV und MVA
+verwendet werden, sofern das Ergebnis dimensionsrichtig gebildet wird.
+
+Die normierte Impedanz lautet
+\begin{equation}
+  z_{\mathrm{pu}}=\frac{Z}{Z_B}=Z\frac{S_B}{U_B^2}.
+  \label{eq:zpu}
+\end{equation}
+Analog gilt $i_{\mathrm{pu}}=I/I_B$ und $u_{\mathrm{pu}}=U/U_B$.
+Bei Wechselstromrechnung sind Impedanzen und Spannungen komplexe Größen; die
+Bezugsgrößen selbst sind reelle positive Beträge.
+
+\begin{merke}
+Die Formel $Z_B=U_B^2/S_B$ gilt in dieser Form für ein konsistentes
+Drehstromsystem mit Leiter-Leiter-Bezugsspannung und dreiphasiger
+Bezugsleistung. Vermischen Sie diese Größen nicht mit einer einphasigen
+Rechnung, ohne die Definitionen entsprechend anzupassen.
+\end{merke}
+
+\section{Impedanz auf eine andere Spannungsebene beziehen}
+
+Für einen idealen Transformator mit Übersetzungsverhältnis
+\begin{equation}
+  a=\frac{U_1}{U_2}
+\end{equation}
+folgt aus der Erhaltung der Leistung und dem Übersetzungsverhältnis der
+Spannungen die auf Seite 1 bezogene Impedanz einer Komponente auf Seite 2:
+\begin{equation}
+  Z_2'=a^2 Z_2.
+  \label{eq:impedanz_beziehen}
+\end{equation}
+In Gegenrichtung gilt $Z_1'=Z_1/a^2$. Die Regel gilt für die gesamte komplexe
+Impedanz, also sowohl für den Widerstands- als auch für den Reaktanzanteil:
+\begin{equation}
+  R'=a^2R,\qquad X'=a^2X.
+\end{equation}
+
+\begin{rechenbeispiel}
+Eine Niederspannungs-Komponente habe $Z_2=(0{,}08+j0{,}06)\,\Omega$. Ein
+idealer Transformator setze $20\,\mathrm{kV}$ auf $0{,}4\,\mathrm{kV}$ um.
+Dann ist $a=50$ und damit
+\[
+ Z_2'=50^2(0{,}08+j0{,}06)\,\Omega
+     =(200+j150)\,\Omega.
+\]
+Der Betrag der Impedanz wird mit $a^2=2500$ multipliziert. Das ist kein
+physikalisches Anwachsen der Komponente, sondern die Darstellung derselben
+Wirkung auf der Hochspannungsseite des Ersatzschaltbilds.
+\end{rechenbeispiel}
+
+\section{Per-Unit-Umrechnung zwischen Bezugsbasen}
+
+Eine physikalische Impedanz bleibt gleich, ihr p.u.-Wert hängt aber von der
+gewählten Bezugsleistung und Bezugsspannung ab. Ist eine Impedanz auf der
+alten Basis $(S_{B,\mathrm{alt}},U_{B,\mathrm{alt}})$ als
+$z_{\mathrm{pu,alt}}$ bekannt, ergibt sich auf einer neuen Basis
+\begin{equation}
+ z_{\mathrm{pu,neu}}=z_{\mathrm{pu,alt}}
+ \frac{S_{B,\mathrm{neu}}}{S_{B,\mathrm{alt}}}
+ \left(\frac{U_{B,\mathrm{alt}}}{U_{B,\mathrm{neu}}}\right)^2.
+ \label{eq:pu_basiswechsel}
+\end{equation}
+Die Formel folgt direkt daraus, dass $Z=z_{\mathrm{pu}}U_B^2/S_B$ auf beiden
+Basen dieselbe reale Impedanz beschreiben muss.
+
+Wählt man die Bezugsspannungen auf beiden Seiten eines Transformators im
+Verhältnis seiner Nennspannungen, vereinfacht sich die Umrechnung über den
+Transformator hinweg: Die p.u.-Impedanz bleibt bei gleicher Bezugsleistung
+auf beiden Seiten gleich. Genau das macht die Methode für mehrstufige Netze
+so nützlich.
+
+\begin{merke}
+Beim Basiswechsel darf der Spannungsfaktor in
+\cref{eq:pu_basiswechsel} nicht weggelassen werden, wenn die alte und neue
+Bezugsspannung nicht identisch sind. Die häufig verwendete Kurzform
+$z_{\mathrm{pu,neu}}=z_{\mathrm{pu,alt}}S_{B,\mathrm{neu}}/S_{B,\mathrm{alt}}$
+setzt voraus, dass die Bezugsspannung unverändert bleibt oder dass die
+Bezugsbasen entlang eines Transformators passend gewählt sind.
+\end{merke}
+
+\section{Transformatorimpedanz aus Typenschilddaten}
+
+Auf dem Transformator-Typenschild findet sich häufig die relative
+Kurzschlussspannung $u_k$ in Prozent. Sie ist die Spannung, die bei
+kurzgeschlossener Gegenseite erforderlich ist, damit bei Nennfrequenz der
+Nennstrom fließt, angegeben als Anteil der Nennspannung. Für das übliche
+vereinfachte Ersatzschaltbild ergibt sich der Betrag der Impedanz bezogen auf
+die Nennbasis des Transformators zu
+\begin{equation}
+  z_{T,\mathrm{pu}}\approx\frac{u_k[\%]}{100}.
+  \label{eq:uk_pu}
+\end{equation}
+Die Näherung bezieht sich auf den Impedanzbetrag. $u_k$ allein liefert nicht
+die Aufteilung in Widerstand und Reaktanz. Wenn die Kupferverluste $P_k$
+(Nennstrom-Kurzschlussverluste) bekannt sind, lässt sich diese Aufteilung
+näherungsweise ergänzen.
+
+Für die Bezugsleistung $S_N$ und die Leiter-Leiter-Nennspannung $U_N$ ist der
+Nennstrom
+\[
+ I_N=\frac{S_N}{\sqrt{3}U_N}.
+\]
+Der Impedanzbetrag auf der jeweiligen Seite beträgt
+\begin{equation}
+ |Z_T|=\frac{u_k}{100}\frac{U_N^2}{S_N},
+ \label{eq:zt_ohm}
+\end{equation}
+sofern $u_k$ als dimensionsloser Wert eingesetzt wird. Für die Umrechnung auf
+eine andere Bezugsbasis wird anschließend
+\cref{eq:pu_basiswechsel} verwendet.
+
+\begin{rechenbeispiel}
+Ein Transformator hat $S_N=\SI{10}{\mega\volt\ampere}$,
+$U_N=\SI{20}{\kilo\volt}$ auf der betrachteten Seite und $u_k=\SI{8}{\percent}$.
+Dann gilt
+\[
+ Z_B=\frac{(20\,\mathrm{kV})^2}{10\,\mathrm{MVA}}=40\,\Omega,
+ \qquad |Z_T|\approx0{,}08\cdot40\,\Omega=3{,}2\,\Omega.
+\]
+Das ist der Betrag der auf diese Seite bezogenen Kurzschlussimpedanz, nicht
+automatisch ein reiner Blindwiderstand von $j3{,}2\,\Omega$.
+\end{rechenbeispiel}
+
+\section{Netzimpedanz aus Kurzschlussleistung}
+
+Ist am Einspeisepunkt die dreiphasige Anfangs-Kurzschlussleistung
+$S_k''$ bekannt, kann der Betrag der äquivalenten Netzimpedanz überschlägig
+bestimmt werden:
+\begin{equation}
+ |Z_Q|\approx\frac{U_n^2}{S_k''}.
+ \label{eq:zquelle}
+\end{equation}
+Auf einer p.u.-Basis mit $U_B=U_n$ folgt unmittelbar
+\begin{equation}
+ |z_{Q,\mathrm{pu}}|\approx\frac{S_B}{S_k''}.
+ \label{eq:zquellepu}
+\end{equation}
+Die Kurzschlussleistung allein bestimmt wiederum nicht den Winkel der
+Impedanz. Für eine belastbare Kurzschlussrechnung werden, soweit erforderlich,
+auch das Verhältnis $R/X$, die Netzbetriebsbedingungen, die Beiträge von
+Motoren oder dezentralen Einspeisern und die anzuwendenden Rechenregeln
+berücksichtigt.
+
+\section{Durchgängiges Beispiel: Quelle, Transformator und Kabel}
+
+Gegeben sei ein vereinfachtes Netz mit folgenden Daten:
+\begin{itemize}
+ \item Einspeisung auf der Mittelspannungsseite: $U_n=\SI{20}{\kilo\volt}$,
+       $S_k''=\SI{250}{\mega\volt\ampere}$,
+ \item Transformator: $\SI{20}{\kilo\volt}/\SI{0.4}{\kilo\volt}$,
+       $S_N=\SI{1}{\mega\volt\ampere}$, $u_k=\SI{6}{\percent}$,
+ \item Niederspannungskabel: $Z_K=(0{,}015+j0{,}010)\,\Omega$,
+       auf die betrachtete Strecke bezogen.
+\end{itemize}
+
+Wir wählen $S_B=\SI{1}{\mega\volt\ampere}$ als gemeinsame
+Bezugsleistung. Die Bezugsspannungen sind $\SI{20}{\kilo\volt}$ auf der
+Mittelspannungsseite und $\SI{0.4}{\kilo\volt}$ auf der
+Niederspannungsseite. Sie stehen im selben Verhältnis wie die
+Transformator-Nennspannungen.
+
+\paragraph{1. Einspeisung.}
+Mit \cref{eq:zquellepu} folgt
+\[
+ |z_{Q,\mathrm{pu}}|\approx\frac{1}{250}=0{,}004.
+\]
+Für die Beispielrechnung nehmen wir vereinfachend eine rein induktive
+Quellenimpedanz $z_Q\approx j0{,}004$ an. Das ist eine Modellannahme, keine
+Information, die sich allein aus $S_k''$ ableiten lässt.
+
+\paragraph{2. Transformator.}
+Da die Bezugsleistung gleich der Transformator-Nennleistung ist und die
+Bezugsspannungen den Nennspannungen folgen, gilt
+\[
+ z_{T,\mathrm{pu}}\approx j0{,}06,
+\]
+unter der zusätzlichen vereinfachenden Annahme, dass die Transformatorimpedanz
+vollständig reaktiv ist. Aus $u_k$ allein wäre diese Annahme nicht beweisbar.
+
+\paragraph{3. Kabel.}
+Auf der Niederspannungsseite ist
+\[
+ Z_{B,\mathrm{NS}}=\frac{(0{,}4\,\mathrm{kV})^2}{1\,\mathrm{MVA}}
+ =0{,}16\,\Omega.
+\]
+Somit
+\[
+ z_{K,\mathrm{pu}}=\frac{0{,}015+j0{,}010}{0{,}16}
+ =0{,}09375+j0{,}0625.
+\]
+
+\paragraph{4. Gesamtimpedanz und Fehlerstrom.}
+Alle Impedanzen liegen nun auf derselben p.u.-Basis und können addiert werden:
+\begin{align*}
+ z_{\Sigma,\mathrm{pu}}&=z_Q+z_T+z_K\\
+ &\approx0{,}09375+j(0{,}004+0{,}06+0{,}0625)\\
+ &=0{,}09375+j0{,}1265.
+\end{align*}
+Der Betrag ist $|z_{\Sigma,\mathrm{pu}}|\approx0{,}1574$. Der Bezugsstrom auf
+der Niederspannungsseite beträgt
+\[
+ I_{B,\mathrm{NS}}=\frac{1\,\mathrm{MVA}}{\sqrt{3}\cdot0{,}4\,\mathrm{kV}}
+ \approx\SI{1.443}{\kilo\ampere}.
+\]
+Für einen dreipoligen Fehler am Kabelende ergibt die vereinfachte Rechnung
+\[
+ I_k\approx\frac{I_B}{|z_{\Sigma,\mathrm{pu}}|}
+ \approx\SI{9.17}{\kilo\ampere}.
+\]
+
+\begin{sicherheitshinweis}
+Dieses Beispiel illustriert die Rechenmethode, ist aber keine vollständige
+Kurzschlussberechnung nach einer anzuwendenden Norm. Es vernachlässigt unter
+anderem den ohmschen Anteil der Quellen- und Transformatorimpedanz,
+Spannungsfaktoren, Toleranzen, Betriebszustände und mögliche weitere
+Kurzschlussstrombeiträge. Für die Auslegung von Schaltgeräten, Schutzorganen
+und Betriebsmitteln müssen die maßgeblichen Randbedingungen und aktuellen
+Regelwerke berücksichtigt werden.
+\end{sicherheitshinweis}
+
+\section{Typische Fehler bei der Umrechnung}
+\begin{itemize}
+ \item Leiter-Leiter-Spannung und Phasenspannung werden in einer Rechnung
+       vermischt.
+ \item Eine Impedanz wird ohne Quadrat des Übersetzungsverhältnisses auf eine
+       andere Spannungsebene bezogen.
+ \item Bei einem Basiswechsel wird der Faktor für die Bezugsleistung oder
+       Bezugsspannung vergessen.
+ \item Der Prozentwert $u_k=6\,\%$ wird als $6$ statt als $0{,}06$ eingesetzt.
+ \item Aus $u_k$ oder $S_k''$ wird fälschlich ein vollständiger komplexer
+       Impedanzwert einschließlich Winkel abgeleitet.
+ \item Impedanzen in Ohm von unterschiedlichen Spannungsebenen werden direkt
+       addiert, ohne sie vorher umzurechnen.
+\end{itemize}
+
+\begin{aufgaben}
+ \item Bestimmen Sie $Z_B$ für $S_B=\SI{5}{\mega\volt\ampere}$ und
+       $U_B=\SI{10}{\kilo\volt}$.
+ \item Ein Transformator hat $S_N=\SI{5}{\mega\volt\ampere}$,
+       $U_N=\SI{10}{\kilo\volt}$ und $u_k=\SI{7}{\percent}$. Bestimmen Sie
+       den Impedanzbetrag auf dieser Seite in Ohm.
+ \item Eine Impedanz beträgt auf einer Basis $z_{\mathrm{pu,alt}}=0{,}08$.
+       Die Bezugsspannung bleibt gleich; die Bezugsleistung steigt von
+       $\SI{10}{\mega\volt\ampere}$ auf $\SI{20}{\mega\volt\ampere}$.
+       Wie groß ist $z_{\mathrm{pu,neu}}$?
+ \item Warum reicht die Angabe $u_k=\SI{6}{\percent}$ nicht aus, um den
+       vollständigen komplexen Transformatorimpedanzwert zu bestimmen?
+ \item Welche Bedingung muss erfüllt sein, bevor Impedanzen in Ohm direkt
+       addiert werden dürfen?
+\end{aufgaben}
+
+\section*{Kurzlösungen}
+\begin{enumerate}[label=\arabic*.]
+ \item $Z_B=(10\,\mathrm{kV})^2/(5\,\mathrm{MVA})=20\,\Omega$.
+ \item $Z_B=20\,\Omega$ und $|Z_T|\approx0{,}07\cdot20=1{,}4\,\Omega$.
+ \item $z_{\mathrm{pu,neu}}=0{,}08\cdot20/10=0{,}16$.
+ \item $u_k$ liefert den Impedanzbetrag; für den Winkel bzw. die Aufteilung in
+       $R$ und $X$ braucht man weitere Angaben, etwa Kurzschlussverluste.
+ \item Sie müssen auf dieselbe Spannungsebene bezogen sein und sich auf
+       kompatible Ersatzschaltbild- und Frequenzannahmen beziehen.
+\end{enumerate}

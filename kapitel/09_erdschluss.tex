@@ -1,0 +1,317 @@
+%\chapter{Erdschluss in Mittelspannungsnetzen}
+
+\chapter{Erdschlussberechnung und Erdschlussverhalten}
+\label{chap:09-erdschluss}
+
+\section{Einordnung}
+
+Ein Erdschluss liegt vor, wenn ein aktiver Leiter über eine Fehlerstelle
+mit Erde oder einem geerdeten leitfähigen Teil verbunden wird. Der
+Erdschlussstrom hängt nicht nur von der Netzspannung und der Fehlerimpedanz
+ab, sondern wesentlich von der Sternpunktbehandlung, den kapazitiven
+Strömen, den Nullsystemimpedanzen und den Erdungswegen.
+
+Die Beurteilung eines Erdschlusses muss deshalb zwischen unterschiedlichen
+Netzformen unterscheiden. Insbesondere sind isolierte, kompensierte und
+niederohmig geerdete Netze nicht mit demselben vereinfachten Modell
+zu behandeln.
+
+\section{Grundlegende Netzformen}
+
+\subsection{Isoliertes Netz}
+
+In einem isolierten Netz ist der Netzsternpunkt nicht absichtlich niederohmig
+mit Erde verbunden. Ein einpoliger Erdschluss wird daher wesentlich durch
+die Kapazitäten der gesunden Phasen gegen Erde und die übrigen
+Ableitpfade bestimmt.
+
+Der Erdschlussstrom kann bei ausgedehnten Kabelnetzen trotz fehlender
+direkter Sternpunkterdung beträchtlich sein, da die Kabelkapazitäten
+einen kapazitiven Rückstrompfad bilden.
+
+\subsection{Kompensiertes Netz}
+
+In einem kompensierten Netz wird der Sternpunkt über eine
+Petersen-Spule mit Erde verbunden. Die induktive Stromkomponente der Spule
+wird so eingestellt, dass sie den kapazitiven Erdschlussstrom des Netzes
+weitgehend kompensiert.
+
+Die Kompensation ist nicht automatisch vollständig. Netzänderungen,
+Schaltzustände, Verluste und Verstimmungen beeinflussen den verbleibenden
+Erdschlussstrom. Die tatsächliche Auslegung und Abstimmung müssen zum
+Netz und zum vorgesehenen Schutzkonzept passen.
+
+\subsection{Niederohmig geerdetes Netz}
+
+In niederohmig geerdeten Netzen ist der Sternpunkt über eine definierte
+Impedanz, häufig einen Widerstand, geerdet. Der Erdschlussstrom wird
+dadurch gezielt begrenzt und zugleich ein ausreichend deutliches
+Schutzsignal ermöglicht.
+
+Der Widerstand beeinflusst die Höhe des Fehlerstroms, die
+Sternpunktverschiebung und die Erdungsspannungen. Die Auslegung muss
+Fehlerstrom, zulässige Fehlerdauer, Schutzansprechen und thermische
+Beanspruchung gemeinsam berücksichtigen.
+
+\section{Einpoliger Erdschluss und symmetrische Komponenten}
+
+Ein einpoliger Erdschluss an Phase \(a\) kann unter üblichen Voraussetzungen
+mit den Sequenznetzen beschrieben werden. Für einen Fehler mit Impedanz
+\(Z_f\) gelten am Fehlerpunkt
+\[
+  I_b=0,\qquad I_c=0.
+\]
+
+Daraus folgt für die Sequenzströme
+\[
+  I_0=I_1=I_2.
+\]
+Der Fehlerstrom beträgt
+\[
+  I_f=I_a=I_0+I_1+I_2=3I_0.
+\]
+
+Die Sequenznetze werden bei diesem Fehler in Reihe geschaltet. Mit der
+Mitsystem-Ersatzspannung \(U_{\mathrm{Th}}\) ergibt sich im vereinfachten
+Modell
+\[
+  I_f=
+  \frac{3U_{\mathrm{Th}}}
+  {Z_1+Z_2+Z_0+3Z_f}.
+\]
+
+Diese Gleichung ist nur dann unmittelbar anwendbar, wenn die verwendeten
+Sequenzimpedanzen und die Ersatzspannung die konkrete Netzform abbilden.
+Insbesondere darf die Nullsystemimpedanz nicht ohne Prüfung durch die
+Mitsystemimpedanz ersetzt werden.
+
+\section{Bedeutung der Nullsystemimpedanz}
+
+Die Nullsystemimpedanz hängt unter anderem ab von:
+\begin{itemize}
+  \item der Sternpunktbehandlung;
+  \item Transformator-Schaltgruppen und Wicklungsverschaltungen;
+  \item Erdungsimpedanzen und Erdungsleitern;
+  \item Kabelschirmen und metallischen Bewehrungen;
+  \item Rückstromwegen über Erde und geerdete leitfähige Strukturen;
+  \item dem Aufbau der Netzkomponenten.
+\end{itemize}
+
+Eine Erdschlussberechnung, die nur die Mitsystemimpedanz berücksichtigt,
+kann deshalb erheblich vom tatsächlichen Verhalten abweichen.
+
+\section{Sternpunktverschiebung und gesunde Phasen}
+
+Bei einem einpoligen Erdschluss in einem isolierten oder kompensierten Netz
+kann sich das Potential des Netzsternpunkts gegenüber Erde verschieben.
+Dadurch verändern sich die Spannungen der Phasen gegen Erde.
+
+In einem idealisierten isolierten Netz kann die Spannung der beiden
+gesunden Phasen gegen Erde bei einem metallischen einpoligen Erdschluss
+auf ungefähr die verkettete Spannung ansteigen. Die tatsächlichen
+Spannungen hängen von Netzkapazitäten, Dämpfung, Fehlerimpedanz und
+Transienten ab.
+
+Diese Spannungsverschiebung ist für die Isolationsbeanspruchung der
+gesunden Phasen wichtig. Sie ist ein Grund dafür, dass die Netzform und
+das Erdschlusskonzept bei der Auswahl der Isolationskoordination
+berücksichtigt werden müssen.
+
+\section{Kapazitiver Erdschlussstrom}
+
+Für eine einzelne Kapazität \(C\) gegen Erde gilt bei sinusförmiger Spannung
+\[
+  I_C=\omega C U.
+\]
+
+Für ein symmetrisches Drehstromnetz ist bei der Berechnung des gesamten
+Erdschlussstroms sorgfältig zu unterscheiden, welche Phasenkapazitäten
+und welche Phasenspannungen in den jeweiligen Strompfad eingehen.
+
+Für ein idealisiertes isoliertes Netz mit gleicher Phasenkapazität \(C\)
+gegen Erde kann der kapazitive Erdschlussstrom eines metallischen
+einpoligen Erdschlusses näherungsweise als
+\[
+  I_E\approx3\omega C U_{\mathrm{ph}}
+\]
+angegeben werden, wobei \(U_{\mathrm{ph}}\) die normale Strangspannung
+gegen Erde und \(C\) die Kapazität einer Phase gegen Erde bezeichnet.
+
+Die Gleichung setzt voraus, dass die drei Phasenkapazitäten gleich sind
+und dass die betrachteten Rückstrompfade durch das kapazitive Modell
+hinreichend beschrieben werden. Bei realen Kabelnetzen können zusätzliche
+Kapazitäten, Schirme, Erdungsverbindungen und Verluste relevant sein.
+
+\subsection{Beispiel}
+
+Ein idealisiertes 20-kV-Netz habe eine gesamte wirksame Phasenkapazität
+gegen Erde von
+\[
+  C=1\,\mathrm{\mu F}
+\]
+je Phase. Bei \(f=50\,\mathrm{Hz}\) ist
+\[
+  \omega=2\pi f\approx314{,}16\,\mathrm{rad/s}.
+\]
+
+Die Strangspannung beträgt
+\[
+  U_{\mathrm{ph}}=\frac{20\,\mathrm{kV}}{\sqrt{3}}
+  \approx11{,}55\,\mathrm{kV}.
+\]
+
+Damit ergibt sich im idealisierten Modell
+\[
+  I_E\approx3\cdot314{,}16\cdot1\,\mathrm{\mu F}
+  \cdot11{,}55\,\mathrm{kV}
+  \approx10{,}9\,\mathrm A.
+\]
+
+Dieser Wert beschreibt nur den kapazitiven Anteil unter den angegebenen
+Annahmen. Er ist nicht ohne Weiteres der gesamte Fehlerstrom eines
+realen Netzes.
+
+\section{Kompensation durch Petersen-Spule}
+
+Die Petersen-Spule stellt eine induktive Verbindung zwischen Sternpunkt
+und Erde her. Ihre Stromkomponente ist näherungsweise
+\[
+  I_L=\frac{U_{\mathrm{ph}}}{\omega L}
+\]
+für eine ideale Induktivität \(L\), an der die Spannung \(U_{\mathrm{ph}}\)
+anliegt.
+
+Die Abstimmung zielt darauf, den induktiven Spulenstrom an den kapazitiven
+Erdschlussstrom des Netzes anzupassen. In einem vereinfachten Modell
+kann der Resonanzzustand durch die Gleichheit der Beträge der
+kapazitiven und induktiven Anteile beschrieben werden.
+
+Reale Netze enthalten Verluste und nichtideale Elemente. Deshalb bleibt
+ein Wirkstromanteil, und eine vollständige Kompensation ist nicht
+automatisch gewährleistet. Zusätzlich muss die Regelung auf
+Netzumschaltungen und Änderungen der wirksamen Kapazität reagieren können.
+
+\section{Erdschlussimpedanz und Fehlerort}
+
+Der Erdschluss ist nicht notwendigerweise metallisch. Die Fehlerstelle
+kann eine erhebliche Impedanz besitzen, beispielsweise durch Lichtbogen,
+verschmutzte Isolatoren, feuchte Oberflächen oder unvollständigen Kontakt
+mit Erde.
+
+Eine erhöhte Fehlerimpedanz reduziert häufig den Fehlerstrom. Dadurch kann
+die sichere Erkennung durch einen Überstromschutz erschwert werden.
+Erdschlussschutzkonzepte nutzen deshalb je nach Netzform unter anderem
+Residualstrom, Nullspannung, Richtungsinformation oder weitere
+netzabhängige Messgrößen.
+
+Der Fehlerstrom allein genügt nicht in jedem Netz, um Fehlerort und
+Fehlerrichtung sicher zu bestimmen.
+
+\section{Schutztechnische Erkennung}
+
+Die Erkennung eines Erdschlusses richtet sich nach dem Netzkonzept.
+Mögliche Messgrößen sind:
+\begin{itemize}
+  \item Summenstrom beziehungsweise Residualstrom;
+  \item Nullsystemstrom \(I_0\);
+  \item Nullsystemspannung \(U_0\);
+  \item Richtungsinformation aus Strom und Spannung;
+  \item transiente oder wattmetrische Komponenten, abhängig vom Schutzprinzip.
+\end{itemize}
+
+Die konkrete Auswahl hängt von der Sternpunktbehandlung, der Fehlerimpedanz,
+dem Umfang des Netzes und den verfügbaren Messwandlern ab. Die
+Einstellwerte sind anhand der tatsächlichen Netzparameter und der
+Schutzkoordination zu bestimmen.
+
+\section{Erdungsspannung und Berührungsspannung}
+
+Bei Erdschlüssen kann Strom in Erdungsanlagen und den umgebenden Boden
+fließen. Dadurch entstehen Potentialgradienten. Zu unterscheiden sind:
+\begin{itemize}
+  \item Erdpotentialanhebung einer Erdungsanlage;
+  \item Berührungsspannung zwischen gleichzeitig berührbaren leitfähigen Teilen;
+  \item Schrittspannung zwischen zwei Punkten auf der Erdoberfläche;
+  \item über leitfähige Verbindungen eingetragene Potentiale.
+\end{itemize}
+
+Die Höhe der Erdpotentialanhebung allein reicht nicht aus, um die
+Personengefährdung zu beurteilen. Entscheidend sind unter anderem die
+Potentialverteilung, Strompfade durch den Körper, Fehlerdauer,
+Oberflächenbeschaffenheit und die konkrete Erdungsgeometrie.
+
+Die Bewertung und Auslegung müssen nach den einschlägigen Normen und
+den konkreten Anlagenbedingungen erfolgen. Ein vereinfachtes
+Ersatzschaltbild ersetzt keine Erdungsberechnung.
+
+\section{Vergleich der Netzformen}
+
+\begin{center}
+\begin{tabular}{p{0.22\linewidth}p{0.34\linewidth}p{0.34\linewidth}}
+\hline
+\textbf{Netzform} & \textbf{Prägendes Verhalten} & \textbf{Wichtige Prüfgröße}\\
+\hline
+Isoliert &
+Erdschlussstrom wird wesentlich durch Netzkapazitäten und Ableitpfade bestimmt &
+Kapazitiver Erdschlussstrom und Sternpunktverschiebung\\
+\hline
+Kompensiert &
+Induktiver Spulenstrom kompensiert den kapazitiven Anteil weitgehend &
+Verstimmung, Reststrom und Schutzempfindlichkeit\\
+\hline
+Niederohmig geerdet &
+Sternpunkterdung begrenzt und bestimmt den Erdschlussstrom gezielt &
+Fehlerstrom, Fehlerdauer und thermische Beanspruchung\\
+\hline
+\end{tabular}
+\end{center}
+
+Die Tabelle beschreibt allgemeine Tendenzen. Sie ersetzt keine konkrete
+Berechnung der jeweiligen Netzform.
+
+\section{Rechenablauf für einen einpoligen Erdschluss}
+
+Ein systematischer Ablauf umfasst:
+\begin{enumerate}
+  \item Netzform und Sternpunktbehandlung identifizieren.
+  \item Fehlerstelle, Fehlerphase und Fehlerimpedanz definieren.
+  \item Mit-, Gegen- und Nullsystemimpedanzen ermitteln.
+  \item Transformator-Schaltgruppen, Kabelschirme und Erdungswege berücksichtigen.
+  \item Die Sequenznetze gemäß den Fehlerbedingungen verschalten.
+  \item Den Fehlerstrom und die Nullsystemgrößen berechnen.
+  \item Spannungsverschiebung und Schutzgrößen bewerten.
+  \item Bei Bedarf Erdpotentialanhebung, Berührungs- und Schrittspannungen
+        mit einem geeigneten Erdungsmodell untersuchen.
+  \item Ergebnisse gegen die tatsächlichen Anlagenparameter und die
+        geltenden Normen prüfen.
+\end{enumerate}
+
+\section{Grenzen der vereinfachten Rechnung}
+
+Die analytische Erdschlussrechnung ist nur so gut wie das verwendete
+Nullsystemmodell. Insbesondere bei ausgedehnten Kabelnetzen, komplexen
+Erdungsanlagen, Lichtbogenfehlern oder leistungselektronischen Einspeisern
+kann ein einfaches konzentriertes Ersatzmodell unzureichend sein.
+
+Bei transienten Erdschlüssen spielen zusätzlich Schaltvorgänge, Wanderwellen,
+nichtlineare Lichtbogenkennlinien und die frequenzabhängigen Eigenschaften
+der Netzkomponenten eine Rolle. Solche Vorgänge erfordern gegebenenfalls
+eine zeitbereichsorientierte Simulation.
+
+\section{Übungsaufgaben}
+
+\begin{enumerate}
+  \item Erklären Sie, weshalb die Nullsystemimpedanz bei einem Erdschluss
+        nicht ohne Weiteres aus der Mitsystemimpedanz abgeleitet werden kann.
+  \item Berechnen Sie für ein idealisiertes isoliertes 10-kV-Netz mit
+        \(C=0{,}8\,\mathrm{\mu F}\) je Phase gegen Erde den kapazitiven
+        Erdschlussstrom bei \(50\,\mathrm{Hz}\).
+  \item Beschreiben Sie den Unterschied zwischen isoliertem,
+        kompensiertem und niederohmig geerdetem Netz.
+  \item Warum kann eine hohe Fehlerimpedanz die Erdschlusserkennung erschweren?
+  \item Erläutern Sie, weshalb die Erdpotentialanhebung allein keine
+        vollständige Bewertung der Berührungsspannung ermöglicht.
+  \item Welche Parameter müssen bekannt sein, bevor eine quantitative
+        Erdschlussberechnung für ein reales Mittelspannungsnetz durchgeführt
+        werden kann?
+\end{enumerate}
